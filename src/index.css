@@ -3,5 +3,7 @@
 @tailwind utilities;
 
 :root {
-  background-image: url(/public/bg.jpg);
+  background-image: url(/bg.jpg);
+  font-family: 'Be Vietnam Pro';
+  color: '#E2E4F3';
 }
