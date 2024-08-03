@@ -8,7 +8,7 @@ export const NavQuestionItem = () => {
         <NavLink
           to={navItem.path}
           key={navItem.id}
-          className="flex items-center justify-center rounded-full bg-[#393F6E] w-10 h-10 mr-2">
+          className="flex items-center justify-center rounded-full bg-[#393F6E] w-10 h-10 mr-2 font-medium">
           {' '}
           {navItem.name}
         </NavLink>
