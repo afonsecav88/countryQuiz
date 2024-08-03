@@ -7,7 +7,6 @@ export const countryService = async () => {
     const contryInfo = await fetch(urlApi);
     const resp: Countries[] = await contryInfo.json();
     return resp ?? [];
-    // console.log(resp);
   } catch (error) {
     console.log(error);
   }
