@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { NavQuestion } from './NavQuestion';
 import { FlatQuestion } from './FlatQuestion';
-import { AnswerCard } from './AnswerCard';
 
 export const QuizContainer = () => {
   return (
@@ -11,9 +10,6 @@ export const QuizContainer = () => {
       <h3 className="flex font-medium text-lg text-justify w-96">
         Which country does this flag {<FlatQuestion />} belong to?
       </h3>
-
-      <AnswerCard />
-
       <Outlet />
     </section>
   );

@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { countryService } from '../services/countryService';
 import { Countries } from '../Interfaces/CountryInterface';
+import { useCountryContext } from './useCountryContext';
 
 export const useGetCountriesData = () => {
-  const [contriesInfo, setContriesInfo] = useState<Countries[]>([]);
+  const { setContriesInfo } = useCountryContext();
 
   useEffect(() => {
     const countriesData = countryService();
@@ -15,6 +16,4 @@ export const useGetCountriesData = () => {
       }
     });
   }, []);
-
-  return { contriesInfo };
 };

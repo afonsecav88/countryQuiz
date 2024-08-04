@@ -1,12 +1,12 @@
 import { Countries } from '../Interfaces/CountryInterface';
+import { useCountryContext } from './useCountryContext';
 
 export const usePaginateCountriesAnswer = (
   dataCountries: Countries[]
-): Countries[] => {
-  const answerPage: number = 1;
-  const anwerPageSize: number = 4;
-  const startIndex = (answerPage - 1) * anwerPageSize;
-  const endIndex = startIndex + anwerPageSize;
+): { questionDataPaginated: Countries[] } => {
+  const { answerPage, answerPageSize } = useCountryContext();
+  const startIndex = (answerPage - 1) * answerPageSize;
+  const endIndex = startIndex + answerPageSize;
   const questionDataPaginated = dataCountries.slice(startIndex, endIndex);
-  return questionDataPaginated;
+  return { questionDataPaginated };
 };

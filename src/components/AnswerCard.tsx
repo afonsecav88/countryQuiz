@@ -1,9 +1,9 @@
-import { AnswerItem } from './AnswerItem';
+import { AnswerItems } from './AnswerItems';
 
 export const AnswerCard = () => {
   return (
     <div className="flex">
-      <AnswerItem />
+      <AnswerItems />
     </div>
   );
 };
