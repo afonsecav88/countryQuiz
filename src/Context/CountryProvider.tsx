@@ -7,16 +7,13 @@ interface CountryPorviderProps {
   children: JSX.Element | JSX.Element[];
 }
 
-// contriesInfo: Countries[];
-//   answerPageData: Countries[];
-//   answerPage: number;
-//   answerPageSize: number;
-
 export const CountryProvider = ({ children }: CountryPorviderProps) => {
   const [contriesInfo, setContriesInfo] = useState<Countries[]>([]);
   const [answerPageData, setAnswerPageData] = useState<Countries[]>([]);
   const [answerPage, setAnswerPage] = useState<number>(1);
   const [answerPageSize, setAnswerPageSize] = useState<number>(4);
+  const [answerPageVisited, setAnswerPageVisited] = useState<boolean>(false);
+  const [validAnswer, setValidAnswer] = useState<boolean>(false);
 
   const countriesDataObject: CountriesState = {
     contriesInfo,
@@ -27,6 +24,10 @@ export const CountryProvider = ({ children }: CountryPorviderProps) => {
     setAnswerPage,
     answerPageSize,
     setAnswerPageSize,
+    answerPageVisited,
+    setAnswerPageVisited,
+    validAnswer,
+    setValidAnswer,
   };
   return (
     <CountryContext.Provider value={countriesDataObject}>
