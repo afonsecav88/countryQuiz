@@ -5,13 +5,17 @@ import { FlatQuestion } from './FlatQuestion';
 export const AnswerItems = () => {
   const { contriesInfo } = useCountryContext();
   const { questionDataPaginated } = usePaginateCountriesAnswer(contriesInfo);
+
+  if (questionDataPaginated.length === 0) return;
   console.log(questionDataPaginated);
   return (
-    <div className="flex justify-center items-center gap-8 mt-6">
+    <div className="flex flex-col justify-center items-center gap-8 mt-6">
+      <h3 className="flex font-medium text-xl text-center line-clamp-2 w-96">
+        Which country does this flag
+        {<FlatQuestion flat={questionDataPaginated[0].flags.svg} />} belong to?
+      </h3>
+
       <div className="flex gap-8 flex-wrap justify-center w-2/3">
-        <h3 className="flex font-medium text-lg text-justify w-96">
-          Which country does this flag {<FlatQuestion />} belong to?
-        </h3>
         {questionDataPaginated.map((answerItems) => (
           <button
             key={answerItems.name.official}

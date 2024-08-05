@@ -5,6 +5,9 @@ export const routes = createBrowserRouter([
   {
     path: '/quiz',
     element: <HomeQuiz />,
-    children: [{ path: 'question', element: <AnswerItems /> }],
+    children: [
+      { path: 'question', element: <AnswerItems /> },
+      { path: 'question:/id', element: <AnswerItems /> },
+    ],
   },
 ]);
