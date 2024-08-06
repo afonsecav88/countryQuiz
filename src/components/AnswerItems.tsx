@@ -10,7 +10,7 @@ export const AnswerItems = () => {
   console.log(questionDataPaginated);
   return (
     <div className="flex flex-col justify-center items-center gap-8 mt-6">
-      <h3 className="flex font-medium text-xl text-center line-clamp-2 w-96">
+      <h3 className="flex justify-center font-medium text-xl">
         Which country does this flag
         {<FlatQuestion flat={questionDataPaginated[0].flags.svg} />} belong to?
       </h3>
