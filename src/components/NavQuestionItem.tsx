@@ -4,13 +4,12 @@ import { useCountryContext } from '../hooks/useCountryContext';
 
 export const NavQuestionItem = () => {
   const { setAnswerPage } = useCountryContext();
+  const navigate = useNavigate();
   const navigateAndUpdateAnwerPage = (questionId: number) => {
     setAnswerPage(questionId);
-    console.log('questionID', questionId);
     navigate(`/quiz/question/${questionId}`);
   };
 
-  const navigate = useNavigate();
   return (
     <ul className="flex">
       {navQuestionItems.map((navItem) => (

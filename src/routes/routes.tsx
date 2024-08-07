@@ -2,7 +2,6 @@ import { createBrowserRouter } from 'react-router-dom';
 import { HomeQuiz } from '../HomeQuiz';
 import { AnswerItems } from '../components/AnswerItems';
 import { NotFoundPAge } from '../components/NotFoundPAge';
-import { AnswerCard } from '../components/AnswerCard';
 export const routes = createBrowserRouter([
   {
     path: '/',
@@ -11,7 +10,7 @@ export const routes = createBrowserRouter([
     children: [
       {
         path: 'quiz',
-        element: <AnswerCard />,
+        element: <AnswerItems />,
         children: [
           {
             path: 'question/:questionId',

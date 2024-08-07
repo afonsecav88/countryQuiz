@@ -2,28 +2,28 @@ import { useEffect, useState } from 'react';
 import { useCountryContext } from '../hooks/useCountryContext';
 import { usePaginateCountriesAnswer } from '../hooks/usePaginateCountriesAnswer';
 import { FlatQuestion } from './FlatQuestion';
-// import Check_round_fill from '/public/Check_round_fill.svg';
-// import Close_round_fill from '/public/Close_round_fill.svg';
 
 export const AnswerItems = () => {
   const [clickedButton, setClickedButton] = useState<string>('');
   const [randomIndex, setRandomIndex] = useState(0);
-  const { contriesInfo, validAnswer, setValidAnswer } = useCountryContext();
+  const { contriesInfo, answerPage } = useCountryContext();
   const { questionDataPaginated } = usePaginateCountriesAnswer(contriesInfo);
-  //Estado creado para cuando sea respondida la pregunta, mantenga la bandera al navegar
 
-  useEffect(() => {
-    const randomPositionFlat = Math.floor(
+  //Estado creado para cuando sea respondida la pregunta, mantenga la bandera al navegar
+  const randomPositionFlat = () => {
+    const randomPosition = Math.floor(
       Math.random() * questionDataPaginated.length
     );
-    console.log('randomPositionFlat', randomPositionFlat);
-    setRandomIndex(randomPositionFlat);
-  }, []);
+    console.log('answerPage', answerPage);
+    setRandomIndex(randomPosition);
+  };
+
+  useEffect(() => {
+    randomPositionFlat();
+  }, [answerPage]);
 
   const handleClick = (commonName: string) => {
     setClickedButton(commonName);
-    if (commonName === questionDataPaginated[randomIndex].name.common)
-      setValidAnswer(true);
   };
 
   if (questionDataPaginated.length === 0) return;
@@ -46,17 +46,11 @@ export const AnswerItems = () => {
             className="flex items-center justify-center gap-2 bg-[#393F6F] w-60 h-16 mr-2 p-2 font-medium rounded-2xl text-sm  hover:bg-gradient-to-r from-[#E65895] to-[#BC6BE8]">
             {answerItems.name.common}
             {index === randomIndex && clickedButton !== '' && (
-              <img
-                src="/public/Check_round_fill.svg"
-                alt="Check_round_fill.svg"
-              />
+              <img src="/Check_round_fill.svg" alt="Check_round_fill.svg" />
             )}
             {index !== randomIndex &&
               clickedButton === answerItems.name.common && (
-                <img
-                  src="/public/Close_round_fill.svg"
-                  alt="Close_round_fill.svg"
-                />
+                <img src="/Close_round_fill.svg" alt="Close_round_fill.svg" />
               )}
           </button>
         ))}
