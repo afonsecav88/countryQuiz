@@ -1,8 +1,8 @@
 export interface Countries {
   flags: Flags;
   name: Name;
-  validQuestion: false;
-  showFalseQuestion: false;
+  validQuestion: boolean;
+  showFalseQuestion: boolean;
 }
 
 export interface Flags {
