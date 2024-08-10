@@ -4,6 +4,7 @@ import { Countries } from './CountryInterface';
 export interface CountriesState {
   contriesInfo: Countries[];
   answerPageData: Countries[];
+  answersPagesData: Countries[];
   answerPage: number;
   answerPageSize: number;
   answerPageVisited: boolean;
@@ -14,4 +15,5 @@ export interface CountriesState {
   setAnswerPageSize: Dispatch<React.SetStateAction<number>>;
   setAnswerPageVisited: Dispatch<React.SetStateAction<boolean>>;
   setValidAnswer: Dispatch<React.SetStateAction<boolean>>;
+  setAnswersPagesData: Dispatch<React.SetStateAction<Countries[]>>;
 }

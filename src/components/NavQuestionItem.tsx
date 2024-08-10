@@ -1,15 +1,8 @@
-import { useNavigate } from 'react-router-dom';
 import { navQuestionItems } from '../routes/navQuestionItems';
-import { useCountryContext } from '../hooks/useCountryContext';
+import { useQuestionPageNavigate } from '../hooks/useQuestionPageNavigate';
 
 export const NavQuestionItem = () => {
-  const { setAnswerPage } = useCountryContext();
-  const navigate = useNavigate();
-  const navigateAndUpdateAnwerPage = (questionId: number) => {
-    setAnswerPage(questionId);
-    navigate(`/quiz/question/${questionId}`);
-  };
-
+  const { navigateAndUpdateAnwerPage } = useQuestionPageNavigate();
   return (
     <ul className="flex">
       {navQuestionItems.map((navItem) => (

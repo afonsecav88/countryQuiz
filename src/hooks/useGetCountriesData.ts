@@ -15,5 +15,5 @@ export const useGetCountriesData = () => {
         setContriesInfo(shuffledData);
       }
     });
-  }, []);
+  }, [setContriesInfo]);
 };

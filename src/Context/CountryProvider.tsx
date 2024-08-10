@@ -3,13 +3,14 @@ import { CountryContext } from './CountryContext';
 import { Countries } from '../Interfaces/CountryInterface';
 import { CountriesState } from '../Interfaces/CountriesState';
 
-interface CountryPorviderProps {
+interface CountryProviderProps {
   children: JSX.Element | JSX.Element[];
 }
 
-export const CountryProvider = ({ children }: CountryPorviderProps) => {
+export const CountryProvider = ({ children }: CountryProviderProps) => {
   const [contriesInfo, setContriesInfo] = useState<Countries[]>([]);
   const [answerPageData, setAnswerPageData] = useState<Countries[]>([]);
+  const [answersPagesData, setAnswersPagesData] = useState<Countries[]>([]);
   const [answerPage, setAnswerPage] = useState<number>(1);
   const [answerPageSize, setAnswerPageSize] = useState<number>(4);
   const [answerPageVisited, setAnswerPageVisited] = useState<boolean>(false);
@@ -28,6 +29,8 @@ export const CountryProvider = ({ children }: CountryPorviderProps) => {
     setAnswerPageVisited,
     validAnswer,
     setValidAnswer,
+    answersPagesData,
+    setAnswersPagesData,
   };
   return (
     <CountryContext.Provider value={countriesDataObject}>
