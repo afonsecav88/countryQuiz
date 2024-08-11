@@ -9,10 +9,8 @@ interface CountryState {
   answerPage: number;
   // questionNavigate: () => void;
   setCountriesInfo: () => void;
-  setPaginatedCountriesInfo: (
-    answerPage: number,
-    countries: Countries[]
-  ) => void;
+  setCountriesInfoToPaginated: (countries: Countries[]) => void;
+  paginatedCountriesInfo: (answerPage: number, countries: Countries[]) => void;
   updatePageAnswer: (
     navigate: NavigateFunction,
     questionPageId: number
@@ -34,11 +32,18 @@ export const useCountryStore = create<CountryState>()((set) => ({
       }
     });
   },
-
-  setPaginatedCountriesInfo: (answerPage, CountriesInfo) => {
+  setCountriesInfoToPaginated: (CountriesInfo) => {
+    set({ CountriesInfoPaginated: CountriesInfo.slice(0, 39) });
+  },
+  paginatedCountriesInfo: (answerPage, CountriesInfoPaginated) => {
     const startIndex = (answerPage - 1) * 4;
     const endIndex = startIndex + 4;
-    set({ CountriesInfoPaginated: CountriesInfo.slice(startIndex, endIndex) });
+    set({
+      CountriesInfoPaginated: CountriesInfoPaginated.slice(
+        startIndex,
+        endIndex
+      ),
+    });
   },
 
   updatePageAnswer: (navigate, questionPageId) => {
