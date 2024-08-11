@@ -5,6 +5,7 @@ import { NavigateFunction } from 'react-router-dom';
 
 interface CountryState {
   CountriesInfo: Countries[];
+  CountriesInfoToPaginated: Countries[];
   CountriesInfoPaginated: Countries[];
   answerPage: number;
   // questionNavigate: () => void;
@@ -20,6 +21,7 @@ interface CountryState {
 export const useCountryStore = create<CountryState>()((set) => ({
   answerPage: 1,
   CountriesInfo: [],
+  CountriesInfoToPaginated: [],
   CountriesInfoPaginated: [],
 
   setCountriesInfo: () => {
@@ -33,7 +35,7 @@ export const useCountryStore = create<CountryState>()((set) => ({
     });
   },
   setCountriesInfoToPaginated: (CountriesInfo) => {
-    set({ CountriesInfoPaginated: CountriesInfo.slice(0, 39) });
+    set({ CountriesInfoToPaginated: CountriesInfo.slice(0, 39) });
   },
   paginatedCountriesInfo: (answerPage, CountriesInfoPaginated) => {
     const startIndex = (answerPage - 1) * 4;

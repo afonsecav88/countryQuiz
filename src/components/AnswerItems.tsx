@@ -1,55 +1,44 @@
-import { useEffect, useState } from 'react';
-import { useCountryContext } from '../hooks/useCountryContext';
-import { usePaginateCountriesAnswer } from '../hooks/usePaginateCountriesAnswer';
-import { FlatQuestion } from './FlatQuestion';
-import { Countries } from '../Interfaces/CountryInterface';
+import { Question } from './Question';
 
 export const AnswerItems = () => {
-  const [clickedButton, setClickedButton] = useState<string>('');
-  const [randomIndex, setRandomIndex] = useState(0);
-  const { contriesInfo, answerPage } = useCountryContext();
-  const questionDataPaginated = usePaginateCountriesAnswer(contriesInfo);
-  const [validAnswer, seValidAnswer] = useState<Countries[]>(
-    questionDataPaginated.map((prevState) => ({
-      ...prevState,
-      validQuestion: prevState.validQuestion === false,
-    }))
-  );
-  console.log('validAnswer', validAnswer);
+  // const [clickedButton, setClickedButton] = useState<string>('');
+  // const [randomIndex, setRandomIndex] = useState(0);
+  // const { contriesInfo, answerPage } = useCountryContext();
+  // const questionDataPaginated = usePaginateCountriesAnswer(contriesInfo);
+  // const [validAnswer, seValidAnswer] = useState<Countries[]>(
+  //   questionDataPaginated.map((prevState) => ({
+  //     ...prevState,
+  //     validQuestion: prevState.validQuestion === false,
+  //   }))
+  // );
+  // console.log('validAnswer', validAnswer);
 
-  //Estado creado para cuando sea respondida la pregunta, mantenga la bandera al navegar
-  const randomPositionFlat = () => {
-    const randomPosition = Math.floor(
-      Math.random() * validAnswer.length
-    );
-    setRandomIndex(randomPosition);
-  };
+  // //Estado creado para cuando sea respondida la pregunta, mantenga la bandera al navegar
+  // const randomPositionFlat = () => {
+  //   const randomPosition = Math.floor(
+  //     Math.random() * validAnswer.length
+  //   );
+  //   setRandomIndex(randomPosition);
+  // };
 
-  useEffect(() => {
-    randomPositionFlat();
-  }, [answerPage]);
+  // useEffect(() => {
+  //   randomPositionFlat();
+  // }, [answerPage]);
 
-  const handleClick = (commonName: string, index: number) => {
-    setClickedButton(commonName);
-    seValidAnswer((prevState) =>
-      prevState.map((state, i) =>
-        i === index ? { ...state, validQuestion: !state.validQuestion } : state
-      )
-    );
-  };
+  // const handleClick = (commonName: string, index: number) => {
+  //   setClickedButton(commonName);
+  //   seValidAnswer((prevState) =>
+  //     prevState.map((state, i) =>
+  //       i === index ? { ...state, validQuestion: !state.validQuestion } : state
+  //     )
+  //   );
+  // };
 
-  if (questionDataPaginated.length === 0) return;
+  // if (questionDataPaginated.length === 0) return;
   return (
     <div className="flex flex-col justify-center items-center gap-8 mt-6">
-      <h3 className="flex justify-center font-medium text-xl">
-        Which country does this flag
-        {
-          <FlatQuestion flat={questionDataPaginated[randomIndex].flags.svg} />
-        }{' '}
-        belong to?
-      </h3>
-
-      <div className="flex gap-8 flex-wrap justify-center w-2/3">
+      <Question />
+      {/* <div className="flex gap-8 flex-wrap justify-center w-2/3">
         {validAnswer.map((answerItems, index) => (
           <button
             key={answerItems.name.common}
@@ -66,7 +55,7 @@ export const AnswerItems = () => {
               )}
           </button>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

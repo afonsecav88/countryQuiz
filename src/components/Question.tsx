@@ -1,20 +1,26 @@
 import { FlatQuestion } from './FlatQuestion';
-import { useCountryContext } from '../hooks/useCountryContext';
+import { useCountryStore } from '../store/CountryStore';
 
 export const Question = () => {
-  // const [randomIndex, setRandomIndex] = useState(0);
-  const { answerPageData } = useCountryContext();
+  const countriesInfoPaginated = useCountryStore(
+    (state) => state.CountriesInfoPaginated
+  );
+  console.log('countriesInfoPaginated', countriesInfoPaginated);
 
-  // const randomPositionFlat = () => {
-  const randomPosition = Math.floor(Math.random() * answerPageData.length);
-  // };
+  const randomPosition = Math.floor(
+    Math.random() * countriesInfoPaginated.length
+  );
 
-  // setRandomIndex(randomPosition);
+  if (countriesInfoPaginated.length === 0) return;
   return (
     <>
       <h3 className="flex justify-center font-medium text-xl">
         Which country does this flag
-        {<FlatQuestion flat={answerPageData[randomPosition].flags.svg} />}
+        {
+          <FlatQuestion
+            flat={countriesInfoPaginated[randomPosition].flags.svg}
+          />
+        }
         belong to?
       </h3>
     </>
