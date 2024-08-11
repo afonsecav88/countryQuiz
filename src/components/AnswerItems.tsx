@@ -9,7 +9,7 @@ export const AnswerItems = () => {
   );
   const randomPosition = useCountryStore((state) => state.randomPosition);
   const answerPage = useCountryStore((state) => state.answerPage);
-
+  console.log('randomPosition[answerPage - 1]', randomPosition[answerPage - 1]);
   console.log('randomPosition', randomPosition);
   const handleClick = () => {
     console.log('hola');
