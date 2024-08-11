@@ -8,6 +8,7 @@ interface CountryState {
   CountriesInfoToPaginated: Countries[];
   CountriesInfoPaginated: Countries[];
   answerPage: number;
+  randomPosition: number[];
   // questionNavigate: () => void;
   setCountriesInfo: () => void;
   setCountriesInfoToPaginated: (countries: Countries[]) => void;
@@ -16,10 +17,12 @@ interface CountryState {
     navigate: NavigateFunction,
     questionPageId: number
   ) => void;
+  setRandomPosition: () => void;
 }
 
 export const useCountryStore = create<CountryState>()((set) => ({
   answerPage: 1,
+  randomPosition: [],
   CountriesInfo: [],
   CountriesInfoToPaginated: [],
   CountriesInfoPaginated: [],
@@ -51,5 +54,12 @@ export const useCountryStore = create<CountryState>()((set) => ({
   updatePageAnswer: (navigate, questionPageId) => {
     set({ answerPage: questionPageId });
     navigate(`/quiz/question/${questionPageId}`);
+  },
+
+  setRandomPosition: () => {
+    const randomPosition = Math.floor(Math.random() * 4);
+    set((state) => ({
+      randomPosition: [...state.randomPosition, randomPosition],
+    }));
   },
 }));
