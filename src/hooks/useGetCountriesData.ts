@@ -1,19 +1,9 @@
 import { useEffect } from 'react';
-import { countryService } from '../services/countryService';
-import { Countries } from '../Interfaces/CountryInterface';
-import { useCountryContext } from './useCountryContext';
+import { useCountryStore } from '../store/CountryStore';
 
 export const useGetCountriesData = () => {
-  const { setContriesInfo } = useCountryContext();
-
+  const countries = useCountryStore((state) => state.setCountriesInfo);
   useEffect(() => {
-    const countriesData = countryService();
-    countriesData.then((data: Countries[] | undefined) => {
-      if (data === undefined) return;
-      else {
-        const shuffledData = data.sort(() => Math.random() - 0.5);
-        setContriesInfo(shuffledData);
-      }
-    });
-  }, [setContriesInfo]);
+    countries();
+  }, [countries]);
 };
