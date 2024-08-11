@@ -18,9 +18,10 @@ interface CountryState {
     questionPageId: number
   ) => void;
   setRandomPosition: () => void;
+  setValidanswer: (commonName: string) => void;
 }
 
-export const useCountryStore = create<CountryState>()((set) => ({
+export const useCountryStore = create<CountryState>()((set, get) => ({
   answerPage: 1,
   randomPosition: [],
   CountriesInfo: [],
@@ -60,6 +61,15 @@ export const useCountryStore = create<CountryState>()((set) => ({
     const randomPosition = Math.floor(Math.random() * 4);
     set((state) => ({
       randomPosition: [...state.randomPosition, randomPosition],
+    }));
+  },
+  setValidanswer: (commonName) => {
+    set((state) => ({
+      CountriesInfoToPaginated: state.CountriesInfoToPaginated.map((country) =>
+        country.name.common === commonName
+          ? { ...country, validQuestion: true }
+          : country
+      ),
     }));
   },
 }));
