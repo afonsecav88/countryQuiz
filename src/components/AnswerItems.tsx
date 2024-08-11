@@ -7,7 +7,11 @@ export const AnswerItems = () => {
   const countriesInfoPaginated = useCountryStore(
     (state) => state.CountriesInfoPaginated
   );
-  const setValidanswer = useCountryStore((state) => state.setValidanswer);
+  const setValidAnswer = useCountryStore((state) => state.setValidAnswer);
+  const setInvalidAnswer = useCountryStore((state) => state.setInvalidAnswer);
+  // const setQuestionAnswered = useCountryStore(
+  //   (state) => state.setQuestionAnswered
+  // );
   // const countriesInfoToPaginate = useCountryStore(
   //   (state) => state.CountriesInfoToPaginated
   // );
@@ -18,14 +22,25 @@ export const AnswerItems = () => {
       countriesInfoPaginated[index].name.common ===
       countriesInfoPaginated[randomPosition[answerPage - 1]].name.common
     ) {
-      setValidanswer(countriesInfoPaginated[index].name.common);
-      console.log(
-        'countriesInfoPaginated[index].name.common',
-        countriesInfoPaginated[index].validQuestion
-      );
+      setValidAnswer(countriesInfoPaginated[index].name.common);
     }
-    countriesInfoPaginated[randomPosition[answerPage - 1]];
+    if (
+      countriesInfoPaginated[index].name.common !==
+      countriesInfoPaginated[randomPosition[answerPage - 1]].name.common
+    ) {
+      setInvalidAnswer(countriesInfoPaginated[index].name.common);
+    }
+    // setQuestionAnswered();
   };
+
+  // const showValidAnswer = (index: number) => {
+  //   return countriesInfoPaginated[index].name.common ===
+  //     countriesInfoPaginated[randomPosition[answerPage - 1]].name.common ? (
+  //     <img src="/Check_round_fill.svg" alt="Check_round_fill.svg" />
+  //   ) : (
+  //     <img src="/Close_round_fill.svg" alt="Close_round_fill.svg" />
+  //   );
+  // };
 
   if (countriesInfoPaginated.length === 0 || randomPosition.length === 0)
     return;
@@ -48,20 +63,17 @@ export const AnswerItems = () => {
         {countriesInfoPaginated.map((answerItems, index) => (
           <button
             key={answerItems.name.common}
-            // disabled={clickedButton !== ''}
+            // disabled={answerItems.disabledQuestion === true}
             onClick={() => handleClick(index)}
             className="flex items-center justify-center gap-2 bg-[#393F6F] w-60 h-16 mr-2 p-2 font-medium rounded-2xl text-sm  hover:bg-gradient-to-r from-[#E65895] to-[#BC6BE8]">
             {answerItems.name.common}
+            {/* {answerItems.clickedAnwer === true && showValidAnswer(index)} */}
+            {answerItems.invalidQuestion === true && (
+              <img src="/Close_round_fill.svg" alt="Close_round_fill.svg" />
+            )}
             {answerItems.validQuestion === true && (
               <img src="/Check_round_fill.svg" alt="Check_round_fill.svg" />
             )}
-            {/* {index === randomIndex && clickedButton !== '' && (
-              <img src="/Check_round_fill.svg" alt="Check_round_fill.svg" />
-            )}
-            {index !== randomIndex &&
-              clickedButton === answerItems.name.common && (
-                <img src="/Close_round_fill.svg" alt="Close_round_fill.svg" />
-              )} */}
           </button>
         ))}
       </div>

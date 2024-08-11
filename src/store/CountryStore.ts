@@ -9,7 +9,6 @@ interface CountryState {
   CountriesInfoPaginated: Countries[];
   answerPage: number;
   randomPosition: number[];
-  // questionNavigate: () => void;
   setCountriesInfo: () => void;
   setCountriesInfoToPaginated: (countries: Countries[]) => void;
   paginatedCountriesInfo: (answerPage: number, countries: Countries[]) => void;
@@ -18,11 +17,15 @@ interface CountryState {
     questionPageId: number
   ) => void;
   setRandomPosition: () => void;
-  setValidanswer: (commonName: string) => void;
+  setValidAnswer: (commonName: string) => void;
+  setInvalidAnswer: (commonName: string) => void;
+  // setClickedAnwer: () => void;
+  // setQuestionAnswered: () => void;
 }
 
-export const useCountryStore = create<CountryState>()((set, get) => ({
+export const useCountryStore = create<CountryState>()((set) => ({
   answerPage: 1,
+  // isQuestionAnswered:
   randomPosition: [],
   CountriesInfo: [],
   CountriesInfoToPaginated: [],
@@ -39,7 +42,7 @@ export const useCountryStore = create<CountryState>()((set, get) => ({
     });
   },
   setCountriesInfoToPaginated: (CountriesInfo) => {
-    set({ CountriesInfoToPaginated: CountriesInfo.slice(0, 39) });
+    set({ CountriesInfoToPaginated: CountriesInfo.slice(0, 40) });
   },
   paginatedCountriesInfo: (answerPage, CountriesInfoPaginated) => {
     const startIndex = (answerPage - 1) * 4;
@@ -63,13 +66,45 @@ export const useCountryStore = create<CountryState>()((set, get) => ({
       randomPosition: [...state.randomPosition, randomPosition],
     }));
   },
-  setValidanswer: (commonName) => {
+  setValidAnswer: (commonName) => {
     set((state) => ({
       CountriesInfoToPaginated: state.CountriesInfoToPaginated.map((country) =>
         country.name.common === commonName
-          ? { ...country, validQuestion: true }
+          ? {
+              ...country,
+              validQuestion: true,
+              disabledQuestion: true,
+              clickedAnwer: true,
+            }
           : country
       ),
     }));
   },
+  setInvalidAnswer: (commonName) => {
+    set((state) => ({
+      CountriesInfoToPaginated: state.CountriesInfoToPaginated.map((country) =>
+        country.name.common === commonName
+          ? {
+              ...country,
+              invalidQuestion: true,
+              disabledQuestion: true,
+              clickedAnwer: true,
+            }
+          : country
+      ),
+    }));
+  },
+
+  // setQuestionAnswered: () => {
+  //   set((state) => ({
+  //     CountriesInfoToPaginated: state.CountriesInfoToPaginated.map((country) =>
+  //       country.validQuestion !== true || country.invalidQuestion !== true
+  //         ? {
+  //             ...country,
+  //             disabledQuestions: true,
+  //           }
+  //         : country
+  //     ),
+  //   }));
+  // },
 }));

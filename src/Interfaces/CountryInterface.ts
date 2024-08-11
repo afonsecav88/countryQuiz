@@ -2,7 +2,9 @@ export interface Countries {
   flags: Flags;
   name: Name;
   validQuestion: boolean;
-  showFalseQuestion: boolean;
+  invalidQuestion: boolean;
+  disabledQuestion: boolean;
+  clickedAnwer: boolean;
 }
 
 export interface Flags {
