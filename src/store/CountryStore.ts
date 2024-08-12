@@ -19,8 +19,8 @@ interface CountryState {
   setRandomPosition: () => void;
   setValidAnswer: (commonName: string) => void;
   setInvalidAnswer: (commonName: string) => void;
+  setQuestionAnswered: () => void;
   // setClickedAnwer: () => void;
-  // setQuestionAnswered: () => void;
 }
 
 export const useCountryStore = create<CountryState>()((set) => ({
@@ -73,7 +73,6 @@ export const useCountryStore = create<CountryState>()((set) => ({
           ? {
               ...country,
               validQuestion: true,
-              disabledQuestion: true,
               clickedAnwer: true,
             }
           : country
@@ -87,7 +86,6 @@ export const useCountryStore = create<CountryState>()((set) => ({
           ? {
               ...country,
               invalidQuestion: true,
-              disabledQuestion: true,
               clickedAnwer: true,
             }
           : country
@@ -95,16 +93,19 @@ export const useCountryStore = create<CountryState>()((set) => ({
     }));
   },
 
-  // setQuestionAnswered: () => {
-  //   set((state) => ({
-  //     CountriesInfoToPaginated: state.CountriesInfoToPaginated.map((country) =>
-  //       country.validQuestion !== true || country.invalidQuestion !== true
-  //         ? {
-  //             ...country,
-  //             disabledQuestions: true,
-  //           }
-  //         : country
-  //     ),
-  //   }));
-  // },
+  setQuestionAnswered: () => {
+    set((state) => ({
+      CountriesInfoToPaginated: state.CountriesInfoToPaginated.map(
+        (country, index) => {
+          if (index >= state.answerPage - 1 && index < state.answerPage + 3) {
+            return {
+              ...country,
+              disabledQuestion: true,
+            };
+          }
+          return country;
+        }
+      ),
+    }));
+  },
 }));

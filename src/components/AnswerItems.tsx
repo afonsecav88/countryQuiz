@@ -7,39 +7,37 @@ export const AnswerItems = () => {
   const countriesInfoPaginated = useCountryStore(
     (state) => state.CountriesInfoPaginated
   );
+  const CountriesInfoToPaginated = useCountryStore(
+    (state) => state.CountriesInfoToPaginated
+  );
   const setValidAnswer = useCountryStore((state) => state.setValidAnswer);
   const setInvalidAnswer = useCountryStore((state) => state.setInvalidAnswer);
-  // const setQuestionAnswered = useCountryStore(
-  //   (state) => state.setQuestionAnswered
-  // );
-  // const countriesInfoToPaginate = useCountryStore(
-  //   (state) => state.CountriesInfoToPaginated
-  // );
+  const setQuestionAnswered = useCountryStore(
+    (state) => state.setQuestionAnswered
+  );
   const randomPosition = useCountryStore((state) => state.randomPosition);
   const answerPage = useCountryStore((state) => state.answerPage);
+
   const handleClick = (index: number) => {
     if (
       countriesInfoPaginated[index].name.common ===
       countriesInfoPaginated[randomPosition[answerPage - 1]].name.common
     ) {
       setValidAnswer(countriesInfoPaginated[index].name.common);
-    }
-    if (
-      countriesInfoPaginated[index].name.common !==
-      countriesInfoPaginated[randomPosition[answerPage - 1]].name.common
-    ) {
+    } else {
       setInvalidAnswer(countriesInfoPaginated[index].name.common);
     }
-    // setQuestionAnswered();
+    setQuestionAnswered();
   };
 
+  console.log(CountriesInfoToPaginated);
   // const showValidAnswer = (index: number) => {
-  //   return countriesInfoPaginated[index].name.common ===
-  //     countriesInfoPaginated[randomPosition[answerPage - 1]].name.common ? (
-  //     <img src="/Check_round_fill.svg" alt="Check_round_fill.svg" />
-  //   ) : (
-  //     <img src="/Close_round_fill.svg" alt="Close_round_fill.svg" />
-  //   );
+  //   if (
+  //     countriesInfoPaginated[index].name.common ===
+  //     countriesInfoPaginated[randomPosition[answerPage - 1]].name.common
+  //   ) {
+  //     <img src="/Check_round_fill.svg" alt="Check_round_fill.svg" />;
+  //   } else <img src="/Close_round_fill.svg" alt="Close_round_fill.svg" />;
   // };
 
   if (countriesInfoPaginated.length === 0 || randomPosition.length === 0)
@@ -63,7 +61,7 @@ export const AnswerItems = () => {
         {countriesInfoPaginated.map((answerItems, index) => (
           <button
             key={answerItems.name.common}
-            // disabled={answerItems.disabledQuestion === true}
+            disabled={answerItems.disabledQuestion === true}
             onClick={() => handleClick(index)}
             className="flex items-center justify-center gap-2 bg-[#393F6F] w-60 h-16 mr-2 p-2 font-medium rounded-2xl text-sm  hover:bg-gradient-to-r from-[#E65895] to-[#BC6BE8]">
             {answerItems.name.common}
