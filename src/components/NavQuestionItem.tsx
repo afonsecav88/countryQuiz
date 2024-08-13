@@ -10,9 +10,9 @@ export const NavQuestionItem = () => {
       {navQuestionItems.map((navItem) => (
         <button
           onClick={() => updatePageAnswer(navigate, navItem.id)}
+          style={{ background: '#393F6E' }}
           key={navItem.id}
-          className="flex items-center justify-center rounded-full bg-[#393F6E] w-12 h-12 mr-2 font-medium">
-          {' '}
+          className="flex items-center justify-center rounded-full w-12 h-12 mr-2 font-medium">
           {navItem.name}
         </button>
       ))}
