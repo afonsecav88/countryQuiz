@@ -7,9 +7,6 @@ export const AnswerItems = () => {
   const countriesInfoPaginated = useCountryStore(
     (state) => state.CountriesInfoPaginated
   );
-  const CountriesInfoToPaginated = useCountryStore(
-    (state) => state.CountriesInfoToPaginated
-  );
   const setValidAnswer = useCountryStore((state) => state.setValidAnswer);
   const setInvalidAnswer = useCountryStore((state) => state.setInvalidAnswer);
   const setQuestionAnswered = useCountryStore(
@@ -26,26 +23,17 @@ export const AnswerItems = () => {
       setValidAnswer(countriesInfoPaginated[index].name.common);
     } else {
       setInvalidAnswer(countriesInfoPaginated[index].name.common);
+      setValidAnswer(
+        countriesInfoPaginated[randomPosition[answerPage - 1]].name.common
+      );
     }
     setQuestionAnswered();
   };
-
-  console.log(CountriesInfoToPaginated);
-  // const showValidAnswer = (index: number) => {
-  //   if (
-  //     countriesInfoPaginated[index].name.common ===
-  //     countriesInfoPaginated[randomPosition[answerPage - 1]].name.common
-  //   ) {
-  //     <img src="/Check_round_fill.svg" alt="Check_round_fill.svg" />;
-  //   } else <img src="/Close_round_fill.svg" alt="Close_round_fill.svg" />;
-  // };
 
   if (countriesInfoPaginated.length === 0 || randomPosition.length === 0)
     return;
   return (
     <div className="flex flex-col justify-center items-center gap-8 mt-6">
-      {/* <Question />
-       */}
       <h3 className="flex justify-center font-medium text-xl">
         Which country does this flag
         {
@@ -65,7 +53,6 @@ export const AnswerItems = () => {
             onClick={() => handleClick(index)}
             className="flex items-center justify-center gap-2 bg-[#393F6F] w-60 h-16 mr-2 p-2 font-medium rounded-2xl text-sm  hover:bg-gradient-to-r from-[#E65895] to-[#BC6BE8]">
             {answerItems.name.common}
-            {/* {answerItems.clickedAnwer === true && showValidAnswer(index)} */}
             {answerItems.invalidQuestion === true && (
               <img src="/Close_round_fill.svg" alt="Close_round_fill.svg" />
             )}
