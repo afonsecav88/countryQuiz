@@ -12,13 +12,15 @@ export const NavQuestionItem = () => {
         <button
           onClick={() => updatePageAnswer(navigate, navItem.id)}
           key={navItem.id}
-          className={`flex items-center justify-center rounded-full w-12 h-12 mr-2 font-medium
+          className={`flex items-center justify-center rounded-full w-12 h-12 mr-2 font-medium hover:bg-[#8B8EAB]
              ${
                answeredQuestion
                  ? 'bg-gradient-to-r from-[#E65895] to-[#BC6BE8]'
                  : 'bg-[#393F6E]'
              }
-             `}></button>
+             `}>
+          {navItem.id}
+        </button>
       ))}
     </ul>
   );
