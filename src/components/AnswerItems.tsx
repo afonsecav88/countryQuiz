@@ -1,34 +1,11 @@
 import { useSetRandomPosition } from '../hooks/useSetRandomPosition';
-import { useCountryStore } from '../store/CountryStore';
+import { useSolveQuizQuestions } from '../hooks/useSolveQuizQuestions';
 import { FlatQuestion } from './FlatQuestion';
 
 export const AnswerItems = () => {
   useSetRandomPosition();
-  const countriesInfoPaginated = useCountryStore(
-    (state) => state.CountriesInfoPaginated
-  );
-  const setValidAnswer = useCountryStore((state) => state.setValidAnswer);
-  const setInvalidAnswer = useCountryStore((state) => state.setInvalidAnswer);
-  const setQuestionAnswered = useCountryStore(
-    (state) => state.setQuestionAnswered
-  );
-  const randomPosition = useCountryStore((state) => state.randomPosition);
-  const answerPage = useCountryStore((state) => state.answerPage);
-
-  const handleClick = (index: number) => {
-    if (
-      countriesInfoPaginated[index].name.common ===
-      countriesInfoPaginated[randomPosition[answerPage - 1]].name.common
-    ) {
-      setValidAnswer(countriesInfoPaginated[index].name.common);
-    } else {
-      setInvalidAnswer(countriesInfoPaginated[index].name.common);
-      setValidAnswer(
-        countriesInfoPaginated[randomPosition[answerPage - 1]].name.common
-      );
-    }
-    setQuestionAnswered();
-  };
+  const { countriesInfoPaginated, randomPosition, handleClick, answerPage } =
+    useSolveQuizQuestions();
 
   if (countriesInfoPaginated.length === 0 || randomPosition.length === 0)
     return;
