@@ -20,12 +20,10 @@ interface CountryState {
   setValidAnswer: (commonName: string) => void;
   setInvalidAnswer: (commonName: string) => void;
   setQuestionAnswered: () => void;
-  // setClickedAnwer: () => void;
 }
 
 export const useCountryStore = create<CountryState>()((set) => ({
   answerPage: 1,
-  // isQuestionAnswered:
   randomPosition: [],
   CountriesInfo: [],
   CountriesInfoToPaginated: [],

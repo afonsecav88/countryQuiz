@@ -5,16 +5,20 @@ import { useCountryStore } from '../store/CountryStore';
 export const NavQuestionItem = () => {
   const navigate = useNavigate();
   const updatePageAnswer = useCountryStore((state) => state.updatePageAnswer);
+  const answeredQuestion: boolean = false;
   return (
     <ul className="flex">
       {navQuestionItems.map((navItem) => (
         <button
           onClick={() => updatePageAnswer(navigate, navItem.id)}
-          style={{ background: '#393F6E' }}
           key={navItem.id}
-          className="flex items-center justify-center rounded-full w-12 h-12 mr-2 font-medium">
-          {navItem.name}
-        </button>
+          className={`flex items-center justify-center rounded-full w-12 h-12 mr-2 font-medium
+             ${
+               answeredQuestion
+                 ? 'bg-gradient-to-r from-[#E65895] to-[#BC6BE8]'
+                 : 'bg-[#393F6E]'
+             }
+             `}></button>
       ))}
     </ul>
   );
