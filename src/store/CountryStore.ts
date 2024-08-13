@@ -97,7 +97,9 @@ export const useCountryStore = create<CountryState>()((set) => ({
     set((state) => ({
       CountriesInfoToPaginated: state.CountriesInfoToPaginated.map(
         (country, index) => {
-          if (index >= state.answerPage - 1 && index < state.answerPage + 3) {
+          const startIndex = (state.answerPage - 1) * 4;
+          const endIndex = startIndex + 4;
+          if (index >= startIndex && index < endIndex) {
             return {
               ...country,
               disabledQuestion: true,
