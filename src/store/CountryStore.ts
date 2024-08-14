@@ -20,6 +20,7 @@ interface CountryState {
   setValidAnswer: (commonName: string) => void;
   setInvalidAnswer: (commonName: string) => void;
   setQuestionAnswered: () => void;
+  setClickedAnswer: (commonName: string) => void;
 }
 
 export const useCountryStore = create<CountryState>()((set) => ({
@@ -71,7 +72,6 @@ export const useCountryStore = create<CountryState>()((set) => ({
           ? {
               ...country,
               validQuestion: true,
-              clickedAnwer: true,
             }
           : country
       ),
@@ -84,7 +84,6 @@ export const useCountryStore = create<CountryState>()((set) => ({
           ? {
               ...country,
               invalidQuestion: true,
-              clickedAnwer: true,
             }
           : country
       ),
@@ -105,6 +104,19 @@ export const useCountryStore = create<CountryState>()((set) => ({
           }
           return country;
         }
+      ),
+    }));
+  },
+
+  setClickedAnswer: (commonName: string) => {
+    set((state) => ({
+      CountriesInfoToPaginated: state.CountriesInfoToPaginated.map((country) =>
+        country.name.common === commonName
+          ? {
+              ...country,
+              clickedAnwer: true,
+            }
+          : country
       ),
     }));
   },

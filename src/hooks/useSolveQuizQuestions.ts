@@ -8,6 +8,7 @@ export const useSolveQuizQuestions = () => {
   );
   const setValidAnswer = useCountryStore((state) => state.setValidAnswer);
   const setInvalidAnswer = useCountryStore((state) => state.setInvalidAnswer);
+  const setClickedAnswer = useCountryStore((state) => state.setClickedAnswer);
   const setQuestionAnswered = useCountryStore(
     (state) => state.setQuestionAnswered
   );
@@ -25,6 +26,7 @@ export const useSolveQuizQuestions = () => {
       );
     }
     setQuestionAnswered();
+    setClickedAnswer(countriesInfoPaginated[index].name.common);
   };
   return {
     handleClick,

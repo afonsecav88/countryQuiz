@@ -28,7 +28,10 @@ export const AnswerItems = () => {
             key={answerItems.name.common}
             disabled={answerItems.disabledQuestion === true}
             onClick={() => handleClick(index)}
-            className="flex items-center justify-center gap-2 bg-[#393F6F] w-60 h-16 mr-2 p-2 font-medium rounded-2xl text-sm  hover:bg-gradient-to-r from-[#E65895] to-[#BC6BE8]">
+            className={`flex items-center justify-center gap-2 bg-[#393F6F] w-60 h-16 mr-2 p-2 font-medium rounded-2xl text-sm  hover:bg-gradient-to-r from-[#E65895] to-[#BC6BE8] ${
+              answerItems.clickedAnwer === true &&
+              'bg-gradient-to-r from-[#E65895] to-[#BC6BE8]'
+            }`}>
             {answerItems.name.common}
             {answerItems.invalidQuestion === true && (
               <img src="/Close_round_fill.svg" alt="Close_round_fill.svg" />
