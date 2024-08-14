@@ -4,7 +4,7 @@ export const useSolveQuizQuestions = () => {
   const randomPosition = useCountryStore((state) => state.randomPosition);
   const answerPage = useCountryStore((state) => state.answerPage);
   const countriesInfoPaginated = useCountryStore(
-    (state) => state.CountriesInfoPaginated
+    (state) => state.countriesInfoPaginated
   );
   const setValidAnswer = useCountryStore((state) => state.setValidAnswer);
   const setInvalidAnswer = useCountryStore((state) => state.setInvalidAnswer);

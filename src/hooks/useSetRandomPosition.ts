@@ -6,5 +6,5 @@ export const useSetRandomPosition = () => {
   const answerPage = useCountryStore((state) => state.answerPage);
   useEffect(() => {
     setRandomPosition();
-  }, [answerPage]);
+  }, [answerPage, setRandomPosition]);
 };

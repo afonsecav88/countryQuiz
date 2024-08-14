@@ -3,7 +3,7 @@ import { useCountryStore } from '../store/CountryStore';
 
 export const useSetCountriesInfoPaginated = () => {
   const countriesInfoToPaginate = useCountryStore(
-    (state) => state.CountriesInfoToPaginated
+    (state) => state.countriesInfoToPaginated
   );
   const answerPage = useCountryStore((state) => state.answerPage);
   const paginatedCountriesInfo = useCountryStore(

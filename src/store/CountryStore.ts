@@ -4,11 +4,12 @@ import { countryService } from '../services/countryService';
 import { NavigateFunction } from 'react-router-dom';
 
 interface CountryState {
-  CountriesInfo: Countries[];
-  CountriesInfoToPaginated: Countries[];
-  CountriesInfoPaginated: Countries[];
+  countriesInfo: Countries[];
+  countriesInfoToPaginated: Countries[];
+  countriesInfoPaginated: Countries[];
   answerPage: number;
   randomPosition: number[];
+  navigatedPages: boolean[];
   setCountriesInfo: () => void;
   setCountriesInfoToPaginated: (countries: Countries[]) => void;
   paginatedCountriesInfo: (answerPage: number, countries: Countries[]) => void;
@@ -23,31 +24,32 @@ interface CountryState {
   setClickedAnswer: (commonName: string) => void;
 }
 
-export const useCountryStore = create<CountryState>()((set) => ({
+export const useCountryStore = create<CountryState>()((set, get) => ({
   answerPage: 1,
   randomPosition: [],
-  CountriesInfo: [],
-  CountriesInfoToPaginated: [],
-  CountriesInfoPaginated: [],
+  navigatedPages: [true],
+  countriesInfo: [],
+  countriesInfoToPaginated: [],
+  countriesInfoPaginated: [],
 
   setCountriesInfo: () => {
     const countriesData = countryService();
     countriesData.then((data: Countries[]) => {
-      if (data === undefined) set({ CountriesInfo: [] });
+      if (data === undefined) set({ countriesInfo: [] });
       else {
         const shuffledData = data.sort(() => Math.random() - 0.5);
-        set({ CountriesInfo: shuffledData });
+        set({ countriesInfo: shuffledData });
       }
     });
   },
   setCountriesInfoToPaginated: (CountriesInfo) => {
-    set({ CountriesInfoToPaginated: CountriesInfo.slice(0, 40) });
+    set({ countriesInfoToPaginated: CountriesInfo.slice(0, 40) });
   },
   paginatedCountriesInfo: (answerPage, CountriesInfoPaginated) => {
     const startIndex = (answerPage - 1) * 4;
     const endIndex = startIndex + 4;
     set({
-      CountriesInfoPaginated: CountriesInfoPaginated.slice(
+      countriesInfoPaginated: CountriesInfoPaginated.slice(
         startIndex,
         endIndex
       ),
@@ -60,14 +62,14 @@ export const useCountryStore = create<CountryState>()((set) => ({
   },
 
   setRandomPosition: () => {
-    const randomPosition = Math.floor(Math.random() * 4);
+    const randomPosition = Math.floor(Math.random() * 3);
     set((state) => ({
       randomPosition: [...state.randomPosition, randomPosition],
     }));
   },
   setValidAnswer: (commonName) => {
     set((state) => ({
-      CountriesInfoToPaginated: state.CountriesInfoToPaginated.map((country) =>
+      countriesInfoToPaginated: state.countriesInfoToPaginated.map((country) =>
         country.name.common === commonName
           ? {
               ...country,
@@ -79,7 +81,7 @@ export const useCountryStore = create<CountryState>()((set) => ({
   },
   setInvalidAnswer: (commonName) => {
     set((state) => ({
-      CountriesInfoToPaginated: state.CountriesInfoToPaginated.map((country) =>
+      countriesInfoToPaginated: state.countriesInfoToPaginated.map((country) =>
         country.name.common === commonName
           ? {
               ...country,
@@ -92,7 +94,7 @@ export const useCountryStore = create<CountryState>()((set) => ({
 
   setQuestionAnswered: () => {
     set((state) => ({
-      CountriesInfoToPaginated: state.CountriesInfoToPaginated.map(
+      countriesInfoToPaginated: state.countriesInfoToPaginated.map(
         (country, index) => {
           const startIndex = (state.answerPage - 1) * 4;
           const endIndex = startIndex + 4;
@@ -106,11 +108,14 @@ export const useCountryStore = create<CountryState>()((set) => ({
         }
       ),
     }));
+    set((state) => ({
+      navigatedPages: [...state.navigatedPages, true],
+    }));
   },
 
   setClickedAnswer: (commonName: string) => {
     set((state) => ({
-      CountriesInfoToPaginated: state.CountriesInfoToPaginated.map((country) =>
+      countriesInfoToPaginated: state.countriesInfoToPaginated.map((country) =>
         country.name.common === commonName
           ? {
               ...country,

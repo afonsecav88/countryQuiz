@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useCountryStore } from '../store/CountryStore';
 
 export const useSetCountriesInfoToPaginate = () => {
-  const countriesInfo = useCountryStore((state) => state.CountriesInfo);
+  const countriesInfo = useCountryStore((state) => state.countriesInfo);
   const setCountriesInfoToPaginated = useCountryStore(
     (state) => state.setCountriesInfoToPaginated
   );
