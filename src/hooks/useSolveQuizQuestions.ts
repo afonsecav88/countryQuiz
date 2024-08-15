@@ -3,6 +3,7 @@ import { useCountryStore } from '../store/CountryStore';
 export const useSolveQuizQuestions = () => {
   const randomPosition = useCountryStore((state) => state.randomPosition);
   const answerPage = useCountryStore((state) => state.answerPage);
+  const setNavigatePage = useCountryStore((state) => state.setNavigatePage);
   const countriesInfoPaginated = useCountryStore(
     (state) => state.countriesInfoPaginated
   );
@@ -27,6 +28,7 @@ export const useSolveQuizQuestions = () => {
     }
     setQuestionAnswered();
     setClickedAnswer(countriesInfoPaginated[index].name.common);
+    setNavigatePage();
   };
   return {
     handleClick,

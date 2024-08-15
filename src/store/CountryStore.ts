@@ -22,12 +22,13 @@ interface CountryState {
   setInvalidAnswer: (commonName: string) => void;
   setQuestionAnswered: () => void;
   setClickedAnswer: (commonName: string) => void;
+  setNavigatePage: () => void;
 }
 
-export const useCountryStore = create<CountryState>()((set, get) => ({
+export const useCountryStore = create<CountryState>()((set) => ({
   answerPage: 1,
   randomPosition: [],
-  navigatedPages: [true],
+  navigatedPages: [],
   countriesInfo: [],
   countriesInfoToPaginated: [],
   countriesInfoPaginated: [],
@@ -108,6 +109,9 @@ export const useCountryStore = create<CountryState>()((set, get) => ({
         }
       ),
     }));
+  },
+
+  setNavigatePage: () => {
     set((state) => ({
       navigatedPages: [...state.navigatedPages, true],
     }));
