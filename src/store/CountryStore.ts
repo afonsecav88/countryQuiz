@@ -8,6 +8,7 @@ interface CountryState {
   countriesInfoToPaginated: Countries[];
   countriesInfoPaginated: Countries[];
   answerPage: number;
+  scoreQuiz: number;
   randomPosition: number[];
   navigatedPages: boolean[];
   setCountriesInfo: () => void;
@@ -23,10 +24,12 @@ interface CountryState {
   setQuestionAnswered: () => void;
   setClickedAnswer: (commonName: string) => void;
   setNavigatePage: () => void;
+  calculateScoreQuiz: () => void;
 }
 
 export const useCountryStore = create<CountryState>()((set) => ({
   answerPage: 1,
+  scoreQuiz: 0,
   randomPosition: [],
   navigatedPages: [],
   countriesInfo: [],
@@ -127,6 +130,12 @@ export const useCountryStore = create<CountryState>()((set) => ({
             }
           : country
       ),
+    }));
+  },
+
+  calculateScoreQuiz: () => {
+    set((state) => ({
+      scoreQuiz: state.scoreQuiz + 1,
     }));
   },
 }));

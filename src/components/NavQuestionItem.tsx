@@ -8,7 +8,6 @@ export const NavQuestionItem = () => {
   const navigatedPages = useCountryStore((state) => state.navigatedPages);
   const answerPage = useCountryStore((state) => state.answerPage);
 
-  console.log(navigatedPages);
   return (
     <ul className="flex">
       {navQuestionItems.map((navItem, index) => (

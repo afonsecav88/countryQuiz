@@ -1,7 +1,6 @@
 import { useSetRandomPosition } from '../hooks/useSetRandomPosition';
 import { useSolveQuizQuestions } from '../hooks/useSolveQuizQuestions';
 import { FlatQuestion } from './FlatQuestion';
-import { QuizComplete } from './QuizComplete';
 
 export const AnswerItems = () => {
   useSetRandomPosition();
@@ -23,7 +22,6 @@ export const AnswerItems = () => {
         }
         belong to?
       </h3>
-      <QuizComplete />
       <div className="flex gap-8 flex-wrap justify-center w-2/3">
         {countriesInfoPaginated.map((answerItems, index) => (
           <button

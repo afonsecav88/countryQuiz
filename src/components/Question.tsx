@@ -13,16 +13,10 @@ export const Question = () => {
 
   if (countriesInfoPaginated.length === 0) return;
   return (
-    <>
-      <h3 className="flex justify-center font-medium text-xl">
-        Which country does this flag
-        {
-          <FlatQuestion
-            flat={countriesInfoPaginated[randomPosition].flags.svg}
-          />
-        }
-        belong to?
-      </h3>
-    </>
+    <h3 className="flex justify-center font-medium text-xl">
+      Which country does this flag
+      {<FlatQuestion flat={countriesInfoPaginated[randomPosition].flags.svg} />}
+      belong to?
+    </h3>
   );
 };
