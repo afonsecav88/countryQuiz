@@ -11,9 +11,9 @@ export const HomeQuiz = () => {
   useSetCountriesInfoPaginated();
 
   return (
-    <main className="flex justify-center items-center h-screen text-[#E2E4F3]">
-      <section className="flex flex-col gap-5 pt-8 items-center w-4/5 h-4/6 min-h-[480px] max-w-7xl bg-[#343964] rounded-lg ">
-        <h3 className="flex font-medium text-[#8B8EAB]">Country Quiz</h3>
+    <main className="flex justify-center items-center h-5/6 text-[#E2E4F3]">
+      <section className="flex flex-col gap-5 pb-20 items-center max-w-2xl my-20 md:max-w-4xl  bg-[#343964] rounded-lg">
+        <h3 className="flex font-medium text-[#8B8EAB] mt-4">Country Quiz</h3>
         <NavQuestion />
         <Outlet />
       </section>
