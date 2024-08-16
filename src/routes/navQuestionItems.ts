@@ -1,4 +1,6 @@
-export const navQuestionItems = [
+import { NavigateQuestionItems } from '../Interfaces/NavigateQuestionItems';
+
+export const navQuestionItems: NavigateQuestionItems[] = [
   { id: 1, name: 1, path: 'question1' },
   { id: 2, name: 2, path: 'question2' },
   { id: 3, name: 3, path: 'question3' },
