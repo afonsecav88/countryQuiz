@@ -25,6 +25,8 @@ interface CountryState {
   setClickedAnswer: (commonName: string) => void;
   setNavigatePage: () => void;
   calculateScoreQuiz: () => void;
+  resetAnswerPage: () => void;
+  resetNavigatePage: () => void;
 }
 
 export const useCountryStore = create<CountryState>()((set) => ({
@@ -120,6 +122,12 @@ export const useCountryStore = create<CountryState>()((set) => ({
     }));
   },
 
+  resetNavigatePage: () => {
+    set({
+      navigatedPages: [],
+    });
+  },
+
   setClickedAnswer: (commonName: string) => {
     set((state) => ({
       countriesInfoToPaginated: state.countriesInfoToPaginated.map((country) =>
@@ -135,5 +143,9 @@ export const useCountryStore = create<CountryState>()((set) => ({
 
   calculateScoreQuiz: () => {
     set((state) => ({ scoreQuiz: state.scoreQuiz + 1 }));
+  },
+
+  resetAnswerPage: () => {
+    set({ answerPage: 1 });
   },
 }));
