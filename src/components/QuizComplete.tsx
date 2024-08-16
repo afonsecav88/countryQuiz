@@ -1,24 +1,7 @@
-import { useNavigate } from 'react-router-dom';
-import { useCountryStore } from '../store/CountryStore';
-import { useSetCountriesInfo } from '../hooks/useSetCountriesInfo';
-import { useSetCountriesInfoToPaginate } from '../hooks/useSetCountriesInfoToPaginate';
-import { useSetCountriesInfoPaginated } from '../hooks/useSetCountriesInfoPaginated';
+import { useCompleteQuiz } from '../hooks/useCompleteQuiz';
 
 export const QuizComplete = () => {
-  const navigate = useNavigate();
-  const resetAnswerPage = useCountryStore((state) => state.resetAnswerPage);
-  const scoreQuiz = useCountryStore((state) => state.scoreQuiz);
-  useSetCountriesInfo();
-  useSetCountriesInfoToPaginate();
-  useSetCountriesInfoPaginated();
-  const resetNavigatePage = useCountryStore((state) => state.resetNavigatePage);
-  resetAnswerPage();
-
-  const handleClick = () => {
-    resetNavigatePage();
-    navigate(`/quiz/question/1`, { replace: true });
-  };
-
+  const { scoreQuiz, handleClick } = useCompleteQuiz();
   return (
     <div className="flex items-center justify-center min-h-screen text-[#E2E4F3]">
       <div className="flex flex-col justify-center items-center bg-[#343963] w-80 h-auto rounded-xl">
