@@ -2,7 +2,6 @@ import { useCountryStore } from '../store/CountryStore';
 
 export const useSolveQuizQuestions = () => {
   const randomPosition = useCountryStore((state) => state.randomPosition);
-  const scoreQuiz = useCountryStore((state) => state.scoreQuiz);
   const answerPage = useCountryStore((state) => state.answerPage);
   const setNavigatePage = useCountryStore((state) => state.setNavigatePage);
   const countriesInfoPaginated = useCountryStore(
@@ -35,7 +34,7 @@ export const useSolveQuizQuestions = () => {
     setClickedAnswer(countriesInfoPaginated[index].name.common);
     setNavigatePage();
   };
-  console.log(scoreQuiz);
+
   return {
     handleClick,
     countriesInfoPaginated,

@@ -1,3 +1,4 @@
+import { useNavigateScoreQuiz } from '../hooks/useNavigateScoreQuiz';
 import { useSetRandomPosition } from '../hooks/useSetRandomPosition';
 import { useSolveQuizQuestions } from '../hooks/useSolveQuizQuestions';
 import { FlatQuestion } from './FlatQuestion';
@@ -6,6 +7,7 @@ export const AnswerItems = () => {
   useSetRandomPosition();
   const { countriesInfoPaginated, randomPosition, handleClick, answerPage } =
     useSolveQuizQuestions();
+  useNavigateScoreQuiz();
 
   if (countriesInfoPaginated.length === 0 || randomPosition.length === 0)
     return;

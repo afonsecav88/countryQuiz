@@ -134,8 +134,6 @@ export const useCountryStore = create<CountryState>()((set) => ({
   },
 
   calculateScoreQuiz: () => {
-    set((state) => ({
-      scoreQuiz: state.scoreQuiz + 1,
-    }));
+    set((state) => ({ scoreQuiz: state.scoreQuiz + 1 }));
   },
 }));
