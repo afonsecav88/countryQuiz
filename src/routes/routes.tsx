@@ -14,6 +14,10 @@ export const routes = createBrowserRouter([
         path: ':questionId',
         element: <AnswerCard />,
       },
+      {
+        path: '*',
+        element: <NotFoundPAge />,
+      },
     ],
   },
   {

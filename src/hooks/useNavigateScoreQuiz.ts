@@ -13,7 +13,9 @@ export const useNavigateScoreQuiz = () => {
       answerPage === 10 &&
       countriesInfoToPaginated[38].disabledQuestion === true
     ) {
-      return navigate(`/quiz/completed`);
+      setTimeout(() => {
+        return navigate(`/quiz/completed`);
+      }, 2000);
     }
   }, [answerPage, countriesInfoToPaginated, navigate]);
 };

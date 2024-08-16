@@ -5,7 +5,6 @@ import { useSetCountriesInfo } from './useSetCountriesInfo';
 import { useSetCountriesInfoPaginated } from './useSetCountriesInfoPaginated';
 import { useSetCountriesInfoToPaginate } from './useSetCountriesInfoToPaginate';
 
-
 export const useCompleteQuiz = () => {
   const navigate = useNavigate();
   const resetAnswerPage = useCountryStore((state) => state.resetAnswerPage);
@@ -23,5 +22,5 @@ export const useCompleteQuiz = () => {
     resetNavigatePage();
     navigate(`/quiz/question/1`, { replace: true });
   };
-  return{handleClick ,scoreQuiz}
-}
+  return { handleClick, scoreQuiz };
+};
