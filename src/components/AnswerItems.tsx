@@ -12,8 +12,9 @@ export const AnswerItems = () => {
   if (countriesInfoPaginated.length === 0 || randomPosition.length === 0)
     return;
   return (
-    <div className="flex flex-col justify-center items-center gap-8 mt-6">
-      <h3 className="flex justify-center font-medium text-xl">
+    <div className="flex flex-col justify-center items-center mt-6 w-auto">
+      {/* <h3 className="flex justify-center font-medium text-center text-xl "> */}
+      <span className="font-medium text-center text-xl p-0 m-0">
         Which country does this flag
         {
           <FlatQuestion
@@ -22,8 +23,10 @@ export const AnswerItems = () => {
             }
           />
         }
-        belong to?
-      </h3>
+        belong
+      </span>
+      <span className="font-medium text-center text-xl pb-10 m-0">to?</span>
+      {/* </h3> */}
       <div className="flex gap-8 flex-wrap justify-center w-2/3">
         {countriesInfoPaginated.map((answerItems, index) => (
           <button
