@@ -8,7 +8,11 @@ export const Question = () => {
   const randomPosition = Math.floor(
     Math.random() * countriesInfoPaginated.length
   );
-  if (countriesInfoPaginated.length === 0) return;
+  if (countriesInfoPaginated.length === 0) {
+    console.log(countriesInfoPaginated.length === 0);
+    return;
+  }
+
   return (
     <h3 className="flex justify-center font-medium text-xl">
       Which country does this flag

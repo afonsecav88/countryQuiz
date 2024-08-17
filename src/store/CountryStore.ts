@@ -63,9 +63,9 @@ export const useCountryStore = create<CountryState>()((set) => ({
     });
   },
 
-  updatePageAnswer: (navigate, questionPageId) => {
-    set({ answerPage: questionPageId });
-    navigate(`/quiz/question/${questionPageId}`);
+  updatePageAnswer: (navigate, questionId) => {
+    set({ answerPage: questionId });
+    navigate(`/quiz/question/${questionId}`);
   },
 
   setRandomPosition: () => {

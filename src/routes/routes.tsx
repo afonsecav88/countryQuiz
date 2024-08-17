@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { HomeQuiz } from '../HomeQuiz';
+import { HomeQuiz } from '../components/HomeQuiz';
 import { NotFoundPAge } from '../components/NotFoundPAge';
 import { AnswerCard } from '../components/AnswerCard';
 import { QuizComplete } from '../components/QuizComplete';

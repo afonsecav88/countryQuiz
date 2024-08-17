@@ -1,10 +1,10 @@
-import './index.css';
-import { NavQuestion } from './components/NavQuestion';
+import '../index.css';
+import { NavQuestion } from './NavQuestion';
 import { Outlet } from 'react-router-dom';
-import { useSetCountriesInfo } from './hooks/useSetCountriesInfo';
-import { useSetCountriesInfoPaginated } from './hooks/useSetCountriesInfoPaginated';
-import { useSetCountriesInfoToPaginate } from './hooks/useSetCountriesInfoToPaginate';
-import { useRedirectTo } from './hooks/useRedirectTo';
+import { useSetCountriesInfo } from '../hooks/useSetCountriesInfo';
+import { useSetCountriesInfoPaginated } from '../hooks/useSetCountriesInfoPaginated';
+import { useSetCountriesInfoToPaginate } from '../hooks/useSetCountriesInfoToPaginate';
+import { useRedirectTo } from '../hooks/useRedirectTo';
 
 export const HomeQuiz = () => {
   useSetCountriesInfo();
