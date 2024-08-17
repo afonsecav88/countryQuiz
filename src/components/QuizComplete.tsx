@@ -3,8 +3,8 @@ import { useCompleteQuiz } from '../hooks/useCompleteQuiz';
 export const QuizComplete = () => {
   const { scoreQuiz, handleClick } = useCompleteQuiz();
   return (
-    <div className="flex items-center justify-center min-h-screen text-[#E2E4F3]">
-      <div className="flex flex-col justify-center items-center bg-[#343963] w-80 h-auto rounded-xl">
+    <div className="flex items-center justify-center  min-h-screen text-[#E2E4F3]">
+      <div className="flex flex-col justify-center items-center bg-[#343963] w-80 h-96 rounded-xl">
         <div>
           <img src="/congrats.svg" alt="congrats" className="max-w-full p-4" />
         </div>

@@ -3,7 +3,6 @@ import { HomeQuiz } from '../HomeQuiz';
 import { NotFoundPAge } from '../components/NotFoundPAge';
 import { AnswerCard } from '../components/AnswerCard';
 import { QuizComplete } from '../components/QuizComplete';
-import { AnswerItems } from '../components/AnswerItems';
 
 export const routes = createBrowserRouter([
   {
@@ -12,14 +11,8 @@ export const routes = createBrowserRouter([
     errorElement: <NotFoundPAge />,
     children: [
       {
-        path: 'quiz/question',
+        path: 'quiz/question/:questionId',
         element: <AnswerCard />,
-        children: [
-          {
-            path: ':questionId',
-            element: <AnswerItems />,
-          },
-        ],
       },
       {
         path: '*',
