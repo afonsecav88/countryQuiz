@@ -5,12 +5,9 @@ export const Question = () => {
   const countriesInfoPaginated = useCountryStore(
     (state) => state.countriesInfoPaginated
   );
-  console.log('countriesInfoPaginated', countriesInfoPaginated);
-
   const randomPosition = Math.floor(
     Math.random() * countriesInfoPaginated.length
   );
-
   if (countriesInfoPaginated.length === 0) return;
   return (
     <h3 className="flex justify-center font-medium text-xl">

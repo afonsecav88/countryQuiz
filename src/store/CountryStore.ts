@@ -27,6 +27,7 @@ interface CountryState {
   calculateScoreQuiz: () => void;
   resetAnswerPage: () => void;
   resetNavigatePage: () => void;
+  resetScoreQuiz: () => void;
 }
 
 export const useCountryStore = create<CountryState>()((set) => ({
@@ -147,5 +148,8 @@ export const useCountryStore = create<CountryState>()((set) => ({
 
   resetAnswerPage: () => {
     set({ answerPage: 1 });
+  },
+  resetScoreQuiz: () => {
+    set({ scoreQuiz: 0 });
   },
 }));

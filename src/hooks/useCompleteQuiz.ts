@@ -13,6 +13,7 @@ export const useCompleteQuiz = () => {
   useSetCountriesInfoToPaginate();
   useSetCountriesInfoPaginated();
   const resetNavigatePage = useCountryStore((state) => state.resetNavigatePage);
+  const resetScoreQuiz = useCountryStore((state) => state.resetScoreQuiz);
 
   useEffect(() => {
     resetAnswerPage();
@@ -20,6 +21,7 @@ export const useCompleteQuiz = () => {
 
   const handleClick = () => {
     resetNavigatePage();
+    resetScoreQuiz();
     navigate(`/quiz/question/1`, { replace: true });
   };
   return { handleClick, scoreQuiz };

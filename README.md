@@ -1,30 +1,31 @@
-# React + TypeScript + Vite
+# Country Quiz App ,creada con React, Zustand, Typescript, React Router Dom Tailwind CSS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Esta app es un desafio frontend: https://devchallenges.io/challenge/country-quizz
 
-Currently, two official plugins are available:
+## Aplicación que consume un API para traer data de paises.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- API usada: https://restcountries.com/v3.1/all?fields=name,flags
 
-## Expanding the ESLint configuration
+## Historias de Usuario
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+✅ Create a country quiz that matches the given design.
 
-- Configure the top-level `parserOptions` property like this:
+✅ By default, generate 10 questions about countries with the given API.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+✅ In each question, users should see 4 options.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+✅ When users select an answer, they should get the correct answer immediately with according indicators in the design.
+
+✅ User can navigate to any questions.
+
+✅ When users answer all 10 questions, they should see a congratulations page with the result and choose to play again.
+
+✅ Deploy the solution and submit Repository URL and Demo URL.
+
+### Levantar la aplicación en desarrollo 🚀
+
+1. Para instalar dependencias de desarrollo `npm install`
+2. Para levantar el server de desarrollo `npm run dev`
+3. Para hacer el build de la app `npm run build`
+
+> NOTA: La app esta desplegada en este URL :
