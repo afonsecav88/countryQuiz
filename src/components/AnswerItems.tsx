@@ -9,8 +9,14 @@ export const AnswerItems = () => {
     useSolveQuizQuestions();
   useNavigateScoreQuiz();
 
-  if (countriesInfoPaginated.length === 0 || randomPosition.length === 0)
-    return;
+  // useEffect(() => {
+  //   countriesInfoPaginated;
+  //   randomPosition;
+  //   if (countriesInfoPaginated.length === 0 || randomPosition.length === 0)
+  //     return;
+  // }, [countriesInfoPaginated, randomPosition]);
+  if (countriesInfoPaginated.length === 0) return;
+  if (randomPosition.length === 0) return;
   return (
     <div className="flex flex-col justify-center items-center mt-6 w-auto">
       {/* <h3 className="flex justify-center font-medium text-center text-xl "> */}

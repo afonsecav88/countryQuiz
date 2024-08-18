@@ -1,12 +1,11 @@
 import { useCountryStore } from '../store/CountryStore';
-
 export const useSolveQuizQuestions = () => {
-  const randomPosition = useCountryStore((state) => state.randomPosition);
   const answerPage = useCountryStore((state) => state.answerPage);
   const setNavigatePage = useCountryStore((state) => state.setNavigatePage);
   const countriesInfoPaginated = useCountryStore(
     (state) => state.countriesInfoPaginated
   );
+  const randomPosition = useCountryStore((state) => state.randomPosition);
   const calculateScoreQuiz = useCountryStore(
     (state) => state.calculateScoreQuiz
   );

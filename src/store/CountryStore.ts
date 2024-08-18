@@ -41,13 +41,15 @@ export const useCountryStore = create<CountryState>()((set) => ({
 
   setCountriesInfo: () => {
     const countriesData = countryService();
-    countriesData.then((data: Countries[]) => {
-      if (data === undefined) set({ countriesInfo: [] });
-      else {
-        const shuffledData = data.sort(() => Math.random() - 0.5);
-        set({ countriesInfo: shuffledData });
-      }
-    });
+    countriesData
+      .then((data: Countries[]) => {
+        if (data === undefined) set({ countriesInfo: [] });
+        else {
+          const shuffledData = data.sort(() => Math.random() - 0.5);
+          set({ countriesInfo: shuffledData });
+        }
+      })
+      .catch((err) => console.log(err));
   },
   setCountriesInfoToPaginated: (CountriesInfo) => {
     set({ countriesInfoToPaginated: CountriesInfo.slice(0, 40) });
