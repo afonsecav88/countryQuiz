@@ -5,10 +5,10 @@ export const useSetCountriesInfoPaginated = () => {
   const countriesInfoToPaginate = useCountryStore(
     (state) => state.countriesInfoToPaginated
   );
-  const answerPage = useCountryStore((state) => state.answerPage);
   const paginatedCountriesInfo = useCountryStore(
     (state) => state.paginatedCountriesInfo
   );
+  const answerPage = useCountryStore((state) => state.answerPage);
   useEffect(() => {
     paginatedCountriesInfo(answerPage, countriesInfoToPaginate);
   }, [answerPage, countriesInfoToPaginate, paginatedCountriesInfo]);

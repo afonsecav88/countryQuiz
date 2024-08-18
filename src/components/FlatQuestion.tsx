@@ -1,6 +1,7 @@
 type FlatQuestionProps = { flat: string };
 
 export const FlatQuestion = ({ flat }: FlatQuestionProps) => {
+  if (flat.length === 0) return;
   return (
     <img
       src={flat}

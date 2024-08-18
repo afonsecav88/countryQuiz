@@ -1,7 +1,7 @@
 import { useCountryStore } from '../store/CountryStore';
+
 export const useSolveQuizQuestions = () => {
   const answerPage = useCountryStore((state) => state.answerPage);
-  const setNavigatePage = useCountryStore((state) => state.setNavigatePage);
   const countriesInfoPaginated = useCountryStore(
     (state) => state.countriesInfoPaginated
   );
@@ -9,6 +9,7 @@ export const useSolveQuizQuestions = () => {
   const calculateScoreQuiz = useCountryStore(
     (state) => state.calculateScoreQuiz
   );
+  const setNavigatePage = useCountryStore((state) => state.setNavigatePage);
   const setValidAnswer = useCountryStore((state) => state.setValidAnswer);
   const setInvalidAnswer = useCountryStore((state) => state.setInvalidAnswer);
   const setClickedAnswer = useCountryStore((state) => state.setClickedAnswer);

@@ -7,10 +7,10 @@ interface CountryState {
   countriesInfo: Countries[];
   countriesInfoToPaginated: Countries[];
   countriesInfoPaginated: Countries[];
-  answerPage: number;
-  scoreQuiz: number;
   randomPosition: number[];
   navigatedPages: boolean[];
+  answerPage: number;
+  scoreQuiz: number;
   setCountriesInfo: () => void;
   setCountriesInfoToPaginated: (countries: Countries[]) => void;
   paginatedCountriesInfo: (answerPage: number, countries: Countries[]) => void;
@@ -70,7 +70,7 @@ export const useCountryStore = create<CountryState>()((set) => ({
   },
 
   setRandomPosition: () => {
-    const randomPosition = Math.floor(Math.random() * 3);
+    const randomPosition = Math.floor(Math.random() * 4);
     set((state) => ({
       randomPosition: [...state.randomPosition, randomPosition],
     }));
