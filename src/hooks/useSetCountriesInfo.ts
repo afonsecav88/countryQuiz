@@ -5,5 +5,5 @@ export const useSetCountriesInfo = () => {
   const countries = useCountryStore((state) => state.setCountriesInfo);
   useEffect(() => {
     countries();
-  }, [countries]);
+  }, []);
 };

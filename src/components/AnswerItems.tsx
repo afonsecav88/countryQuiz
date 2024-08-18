@@ -2,21 +2,16 @@ import { useNavigateScoreQuiz } from '../hooks/useNavigateScoreQuiz';
 import { useSetRandomPosition } from '../hooks/useSetRandomPosition';
 import { useSolveQuizQuestions } from '../hooks/useSolveQuizQuestions';
 import { FlatQuestion } from './FlatQuestion';
+import { LoadingAnswers } from './LoadingAnswers';
 
 export const AnswerItems = () => {
   useSetRandomPosition();
   const { countriesInfoPaginated, randomPosition, handleClick, answerPage } =
     useSolveQuizQuestions();
   useNavigateScoreQuiz();
-
-  // useEffect(() => {
-  //   countriesInfoPaginated;
-  //   randomPosition;
-  //   if (countriesInfoPaginated.length === 0 || randomPosition.length === 0)
-  //     return;
-  // }, [countriesInfoPaginated, randomPosition]);
-  if (countriesInfoPaginated.length === 0) return;
-  if (randomPosition.length === 0) return;
+  console.log(countriesInfoPaginated);
+  if (countriesInfoPaginated.length === 0 || randomPosition.length === 0)
+    return <LoadingAnswers />;
   return (
     <div className="flex flex-col justify-center items-center mt-6 w-auto">
       {/* <h3 className="flex justify-center font-medium text-center text-xl "> */}
