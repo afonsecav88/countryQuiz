@@ -26,7 +26,10 @@ export const AnswerItems = () => {
       <span className="font-medium text-center text-base sm:text-xl md:text-xl lg:text-xl xl:text-xl p-0 m-0">
         Which country does this flag
         {currentFlag && <FlatQuestion flat={currentFlag} />}
-        belong to?
+        belong
+      </span>
+      <span className="font-medium text-center  text-base sm:text-xl md:text-xl lg:text-xl xl:text-xl pb-10 m-0">
+        to?
       </span>
 
       <div className="flex gap-5 flex-wrap justify-center w-2/3">

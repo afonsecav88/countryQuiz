@@ -7,7 +7,6 @@ export const NavQuestionItem = () => {
   const updatePageAnswer = useCountryStore((state) => state.updatePageAnswer);
   const navigatedPages = useCountryStore((state) => state.navigatedPages);
   const answerPage = useCountryStore((state) => state.answerPage);
-
   return (
     <div className="flex flex-wrap items-center justify-center min-w-80 max-h-32">
       {navQuestionItems.map((navItem, index) => (
