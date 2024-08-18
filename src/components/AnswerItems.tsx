@@ -14,7 +14,6 @@ export const AnswerItems = () => {
     return <LoadingAnswers />;
   return (
     <div className="flex flex-col justify-center items-center mt-6 w-auto">
-      {/* <h3 className="flex justify-center font-medium text-center text-xl "> */}
       <span className="font-medium text-center text-base sm:text-xl md:text-xl lg:text-xl xl:text-xl p-0 m-0">
         Which country does this flag
         {

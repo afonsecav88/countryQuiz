@@ -1,5 +1,6 @@
 import { FlatQuestion } from './FlatQuestion';
 import { useCountryStore } from '../store/CountryStore';
+import { LoadingAnswers } from './LoadingAnswers';
 
 export const Question = () => {
   const countriesInfoPaginated = useCountryStore(
@@ -12,7 +13,7 @@ export const Question = () => {
     console.log(countriesInfoPaginated.length === 0);
     return;
   }
-
+  if (countriesInfoPaginated.length === 0) return <LoadingAnswers />;
   return (
     <h3 className="flex justify-center font-medium text-xl">
       Which country does this flag
