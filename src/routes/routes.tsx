@@ -1,22 +1,22 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { HomeQuiz } from '../components/HomeQuiz';
-import { NotFoundPAge } from '../components/NotFoundPAge';
 import { AnswerCard } from '../components/AnswerCard';
 import { QuizComplete } from '../components/QuizComplete';
+import { NotFoundPage } from '../components/NotFoundPage';
 
 export const routes = createBrowserRouter([
   {
     path: '/',
     element: <HomeQuiz />,
-    errorElement: <NotFoundPAge />,
+    errorElement: <NotFoundPage />,
     children: [
       {
         path: 'quiz/question/:questionId',
         element: <AnswerCard />,
       },
       {
-        path: '*',
-        element: <NotFoundPAge />,
+        path: '/*',
+        element: <NotFoundPage />,
       },
     ],
   },
@@ -25,7 +25,7 @@ export const routes = createBrowserRouter([
     element: <QuizComplete />,
   },
   {
-    path: '*',
-    element: <NotFoundPAge />,
+    path: '/*',
+    element: <NotFoundPage />,
   },
 ]);

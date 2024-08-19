@@ -7,10 +7,7 @@ export const NavQuestionItem = () => {
   const updatePageAnswer = useCountryStore((state) => state.updatePageAnswer);
   const navigatedPages = useCountryStore((state) => state.navigatedPages);
   const answerPage = useCountryStore((state) => state.answerPage);
-  // const handleDisableNavigate = (index: number) => {
-  //   return answerPage > 2 || navigatedPages[index - 1] ? true : false;
-  // };
-  console.log(navigatedPages);
+
   return (
     <div className="flex flex-wrap items-center justify-center min-w-80 max-h-32">
       {navQuestionItems.map((navItem, index) => (
@@ -18,7 +15,6 @@ export const NavQuestionItem = () => {
           onClick={() => updatePageAnswer(navigate, navItem.id)}
           key={navItem.id}
           disabled={navigatedPages[index - 1] !== true}
-          // disabled={handleDisableNavigate(index)}
           className={`flex items-center justify-center rounded-full w-12 h-12 m-2 p-2 font-medium hover:bg-[#8B8EAB]
              ${
                navigatedPages[index] === true || index == answerPage - 1
