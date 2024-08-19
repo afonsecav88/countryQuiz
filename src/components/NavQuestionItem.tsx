@@ -14,7 +14,7 @@ export const NavQuestionItem = () => {
         <button
           onClick={() => updatePageAnswer(navigate, navItem.id)}
           key={navItem.id}
-          disabled={navigatedPages[index - 1] !== true}
+          disabled={navigatedPages[index - 1] !== true && index !== 0}
           className={`flex items-center justify-center rounded-full w-12 h-12 m-2 p-2 font-medium hover:bg-[#8B8EAB]
              ${
                navigatedPages[index] === true || index == answerPage - 1
