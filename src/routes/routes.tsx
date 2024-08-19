@@ -15,7 +15,7 @@ export const routes = createBrowserRouter([
         element: <AnswerCard />,
       },
       {
-        path: '/*',
+        path: '*',
         element: <NotFoundPage />,
       },
     ],
@@ -25,7 +25,7 @@ export const routes = createBrowserRouter([
     element: <QuizComplete />,
   },
   {
-    path: '/*',
+    path: '*',
     element: <NotFoundPage />,
   },
 ]);
