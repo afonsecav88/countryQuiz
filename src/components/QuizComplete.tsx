@@ -4,7 +4,7 @@ export const QuizComplete = () => {
   const { scoreQuiz, handleClick } = useCompleteQuiz();
   return (
     <div className="flex items-center justify-center  min-h-screen text-[#E2E4F3]">
-      <div className="flex flex-col justify-center items-center bg-[#343963] w-96 h-96 rounded-xl">
+      <div className="flex flex-col justify-center items-center bg-[#343963] w-96 h-[450px] rounded-xl">
         <img
           src="/congrats.svg"
           alt="congrats"
